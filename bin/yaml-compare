@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'dorian/yaml/compare'
+Dorian::Yaml::Compare.run
