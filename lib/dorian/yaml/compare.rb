@@ -1,11 +1,11 @@
-require 'yaml'
+require "yaml"
 
 module Dorian
   module Yaml
     class Compare
       def self.run
         if ARGV.size < 2 || ARGV.size > 4
-          puts 'USAGE: yaml-compare FILE1 FILE2 [ROOT1] [ROOT2]'
+          puts "USAGE: yaml-compare FILE1 FILE2 [ROOT1] [ROOT2]"
           exit
         end
 
@@ -16,10 +16,15 @@ module Dorian
         file1 = file1[root1] if !root1.nil?
         file2 = file2[root2] if !root2.nil?
 
-        compare(file1, file2)
+        output = with_captured_stdout { compare(file1, file2) }
+
+        if output != ""
+          $stderr.puts output
+          exit 1
+        end
       end
 
-      def self.compare(hash1, hash2, current: '')
+      def self.compare(hash1, hash2, current: "")
         if hash1.kind_of?(Array)
           hash1.each.with_index do |_, i|
             compare(hash1[i], hash2[i], current: current)
@@ -42,6 +47,15 @@ module Dorian
             end
           end
         end
+      end
+
+      def self.with_captured_stdout(&block)
+        original_stdout = $stdout
+        $stdout = StringIO.new
+        block.call
+        $stdout.string
+      ensure
+        $stdout = original_stdout
       end
     end
   end
