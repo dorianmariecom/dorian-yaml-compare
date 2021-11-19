@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "dorian-yaml-compare"
-  s.version = "0.2.1"
+  s.version = "0.3.0"
   s.summary =
     "Compares keys of two YAML files, typically locales files in a Ruby on Rails application"
   s.description =
