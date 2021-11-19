@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "dorian-yaml-compare"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
   s.summary =
     "Compares keys of two YAML files, typically locales files in a Ruby on Rails application"
   s.description =
@@ -12,5 +12,5 @@ Gem::Specification.new do |s|
   s.executables << "yaml-compare"
   s.homepage = "https://github.com/dorianmariefr/yaml-compare"
   s.license = "MIT"
-  s.metadata = { rubygems_mfa_required: true }
+  s.metadata = { "rubygems_mfa_required" => "true" }
 end

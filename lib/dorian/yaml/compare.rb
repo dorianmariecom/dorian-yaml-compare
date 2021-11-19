@@ -18,10 +18,7 @@ module Dorian
 
         output = with_captured_stdout { compare(file1, file2) }
 
-        if output != ""
-          $stderr.puts output
-          exit 1
-        end
+        abort output unless output.empty?
       end
 
       def self.compare(hash1, hash2, current: "")
