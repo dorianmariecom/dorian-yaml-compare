@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "yaml"
 
 module Dorian
@@ -9,12 +11,12 @@ module Dorian
           exit
         end
 
-        file1 = YAML.safe_load(File.read(ARGV[0]))
-        file2 = YAML.safe_load(File.read(ARGV[1]))
+        file1 = YAML.safe_load_file(ARGV[0])
+        file2 = YAML.safe_load_file(ARGV[1])
         root1 = ARGV[2]
         root2 = ARGV[3]
-        file1 = file1[root1] if !root1.nil?
-        file2 = file2[root2] if !root2.nil?
+        file1 = file1[root1] unless root1.nil?
+        file2 = file2[root2] unless root2.nil?
 
         output = with_captured_stdout { compare(file1, file2) }
 
@@ -22,14 +24,12 @@ module Dorian
       end
 
       def self.compare(hash1, hash2, current: "")
-        if hash1.kind_of?(Array)
-          hash1.each.with_index do |_, i|
-            compare(hash1[i], hash2[i], current: current)
-          end
-        elsif hash1.kind_of?(String) || hash2.kind_of?(String)
-          if !hash1.kind_of?(String)
+        if hash1.is_a?(Array)
+          hash1.each.with_index { |_, i| compare(hash1[i], hash2[i], current:) }
+        elsif hash1.is_a?(String) || hash2.is_a?(String)
+          if !hash1.is_a?(String)
             puts "key \"#{current}\" is a string in #{ARGV[1]}"
-          elsif !hash2.kind_of?(String)
+          elsif !hash2.is_a?(String)
             puts "key \"#{current}\" is a string in #{ARGV[0]}"
           end
         else
