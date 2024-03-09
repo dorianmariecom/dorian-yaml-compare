@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
         "e.g. `yaml-compare config/locales/en.yml config/locales/fr.yml en fr`"
   s.authors = ["Dorian Marié"]
   s.email = "dorian@dorianmarie.com"
-  s.files = ["lib/dorian/yaml/compare.rb"]
+  s.files = ["bin/yaml-compare"]
   s.executables << "yaml-compare"
   s.homepage = "https://github.com/dorianmariecom/yaml-compare"
   s.license = "MIT"
