@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
       "\n\n" \
         "e.g. `yaml-compare config/locales/en.yml config/locales/fr.yml en fr`"
   s.authors = ["Dorian Marié"]
-  s.email = "dorian@dorianmarie.fr"
+  s.email = "dorian@dorianmarie.com"
   s.files = ["lib/dorian/yaml/compare.rb"]
   s.executables << "yaml-compare"
   s.homepage = "https://github.com/dorianmariecom/yaml-compare"
