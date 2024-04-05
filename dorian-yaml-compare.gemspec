@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.email = "dorian@dorianmarie.com"
   s.files = ["bin/yaml-compare"]
   s.executables << "yaml-compare"
-  s.homepage = "https://github.com/dorianmariecom/yaml-compare"
+  s.homepage = "https://github.com/dorianmariecom/dorian-yaml-compare"
   s.license = "MIT"
   s.metadata = { "rubygems_mfa_required" => "true" }
 
