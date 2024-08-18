@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     dorian-yaml-compare (0.4.1)
+      yaml
 
 GEM
   remote: https://rubygems.org/
@@ -64,7 +65,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.32.0)
+    rubocop-ast (1.32.1)
       parser (>= 3.3.1.0)
     rubocop-minitest (0.35.1)
       rubocop (>= 1.61, < 2.0)
@@ -88,6 +89,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    yaml (0.3.0)
 
 PLATFORMS
   arm64-darwin-23
