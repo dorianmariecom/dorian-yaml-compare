@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "dorian-yaml-compare"
-  s.version = "0.4.2"
+  s.version = File.read("VERSION").strip
   s.summary = "compares yaml files"
   s.description = s.summary
   s.authors = ["Dorian Marié"]
