@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dorian-yaml-compare (0.4.2)
+    dorian-yaml-compare (0.4.3)
       dorian-arguments
       yaml
 
