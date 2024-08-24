@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require "dorian/arguments"
+require "stringio"
 require "yaml"
 
 def compare(hash1, hash2, current: "")
@@ -35,17 +37,18 @@ ensure
   $stdout = original_stdout
 end
 
-if ARGV.size < 2 || ARGV.size > 4
-  puts "USAGE: yaml-compare FILE1 FILE2 [ROOT1] [ROOT2]"
-  exit
+parsed = Dorian::Arguments.parse(version: { alias: :v }, help: { alias: :h })
+
+abort parsed.help if parsed.options.help
+
+if parsed.options.version
+  abort File.read(File.expand_path("../../VERSION", __FILE__))
 end
 
-file1 = YAML.safe_load_file(ARGV[0])
-file2 = YAML.safe_load_file(ARGV[1])
-root1 = ARGV[2]
-root2 = ARGV[3]
-file1 = file1[root1] unless root1.nil?
-file2 = file2[root2] unless root2.nil?
+file1, file2 = parsed.files.map { |file| YAML.safe_load(File.read(file)) }
+root1, root2 = parsed.arguments
+file1 = file1[root1] if root1
+file2 = file2[root2] if root2
 
 output = with_captured_stdout { compare(file1, file2) }
 
