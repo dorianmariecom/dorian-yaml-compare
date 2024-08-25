@@ -28,10 +28,10 @@ def compare(hash1, hash2, current: "")
   end
 end
 
-def with_captured_stdout(&block)
+def with_captured_stdout
   original_stdout = $stdout
   $stdout = StringIO.new
-  block.call
+  yield
   $stdout.string
 ensure
   $stdout = original_stdout
@@ -42,7 +42,7 @@ parsed = Dorian::Arguments.parse(version: { alias: :v }, help: { alias: :h })
 abort parsed.help if parsed.options.help
 
 if parsed.options.version
-  abort File.read(File.expand_path("../../VERSION", __FILE__))
+  abort File.read(File.expand_path("../VERSION", __dir__))
 end
 
 file1, file2 = parsed.files.map { |file| YAML.safe_load(File.read(file)) }

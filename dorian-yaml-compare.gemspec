@@ -12,6 +12,6 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/dorianmariecom/dorian-yaml-compare"
   s.license = "MIT"
   s.metadata = { "rubygems_mfa_required" => "true" }
-  s.add_dependency "yaml"
   s.add_dependency "dorian-arguments"
+  s.add_dependency "yaml"
 end
