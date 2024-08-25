@@ -45,7 +45,7 @@ if parsed.options.version
   abort File.read(File.expand_path("../VERSION", __dir__))
 end
 
-file1, file2 = parsed.files.map { |file| YAML.safe_load(File.read(file)) }
+file1, file2 = parsed.files.map { |file| YAML.safe_load_file(file) }
 root1, root2 = parsed.arguments
 file1 = file1[root1] if root1
 file2 = file2[root2] if root2
